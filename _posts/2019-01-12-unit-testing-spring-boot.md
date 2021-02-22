@@ -31,9 +31,11 @@ and tests of the persistence layer will be discussed in upcoming articles of thi
 This tutorial is part of a series:
 
 1. [Unit Testing with Spring Boot](/unit-testing-spring-boot/)
-2. [Testing Spring MVC Web Controllers with `@WebMvcTest`](/spring-boot-web-controller-test/)
-3. [Testing JPA Queries with `@DataJpaTest`](/spring-boot-data-jpa-test/)
+2. [Testing Spring MVC Web Controllers with Spring Boot and `@WebMvcTest`](/spring-boot-web-controller-test/)
+3. [Testing JPA Queries with Spring Boot and `@DataJpaTest`](/spring-boot-data-jpa-test/)
 4. [Integration Tests with `@SpringBootTest`](/spring-boot-test/)
+
+**If you like learning from videos, make sure to check out Philip's** [**Testing Spring Boot Applications Masterclass**](https://transactions.sendowl.com/stores/13745/194393) (if you buy through this link, I get a cut). 
 
 ## Dependencies
 
@@ -144,7 +146,7 @@ public class RegisterUseCase {
 }
 ```
 
-This version allows constructor injection by providing a constructor that allows to pass 
+This version allows [constructor injection](/constructor-injection) by providing a constructor that allows to pass 
 in a `UserRepository` instance. In the unit test, we can now
 create such an instance (perhaps a mock instance as we'll discuss later) and pass it into the constructor.
 
@@ -363,4 +365,6 @@ comes with Mockito and AssertJ as testing libraries.
 
 Let's exploit those testing libraries to create expressive unit tests!
 
-The code example in its final form is available [on github](https://github.com/thombergs/code-examples/tree/master/spring-boot/spring-boot-testing).   
+The code example in its final form is available [on github](https://github.com/thombergs/code-examples/tree/master/spring-boot/spring-boot-testing).  
+
+**If you like learning from videos, make sure to check out Philip's** [**Testing Spring Boot Applications Masterclass**](https://transactions.sendowl.com/stores/13745/194393) (if you buy through this link, I get a cut). 

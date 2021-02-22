@@ -1,5 +1,5 @@
 ---
-title: "Testing Spring MVC Web Controllers with @WebMvcTest"
+title: "Testing MVC Web Controllers with Spring Boot and @WebMvcTest"
 categories: [spring-boot]
 modified: 2019-01-19
 excerpt: "An in-depth look at the responsibilities of a Spring Boot web controller and how to cover those responsibilities with meaningful tests."
@@ -25,9 +25,11 @@ expected in a production environment.
 This tutorial is part of a series:
 
 1. [Unit Testing with Spring Boot](/unit-testing-spring-boot/)
-2. [Testing Spring MVC Web Controllers with `@WebMvcTest`](/spring-boot-web-controller-test/)
-3. [Testing JPA Queries with `@DataJpaTest`](/spring-boot-data-jpa-test/)
+2. [Testing Spring MVC Web Controllers with Spring Boot and `@WebMvcTest`](/spring-boot-web-controller-test/)
+3. [Testing JPA Queries with Spring Boot and `@DataJpaTest`](/spring-boot-data-jpa-test/)
 4. [Integration Tests with `@SpringBootTest`](/spring-boot-test/)
+
+**If you like learning from videos, make sure to check out Philip's** [**Testing Spring Boot Applications Masterclass**](https://transactions.sendowl.com/stores/13745/194393) (if you buy through this link, I get a cut). 
 
 ## Dependencies
 
@@ -187,7 +189,9 @@ We use `@MockBean` to mock away the business logic, since we don't want
 to test integration between controller and business logic, but 
 between controller and the HTTP layer. `@MockBean` automatically
 replaces the bean of the same type in the application context with a 
-Mockito mock.
+Mockito mock. 
+
+You can read more about the `@MockBean` annotation in [my article](/spring-boot-mock/) about mocking.
 
 <div class="notice success">
   <h4>Use <code>@WebMvcTest</code> with or without the <code>controllers</code> parameter?</h4>
@@ -360,8 +364,8 @@ void whenValidInput_thenReturnsUserResource() throws Exception {
   UserResource expectedResponseBody = ...;
   String actualResponseBody = mvcResult.getResponse().getContentAsString();
   
-  assertThat(objectMapper.writeValueAsString(expectedResponseBody))
-      .isEqualToIgnoringWhitespace(actualResponseBody);
+  assertThat(actualResponseBody).isEqualToIgnoringWhitespace(
+              objectMapper.writeValueAsString(expectedResponseBody));
 }
 ```
 
@@ -445,8 +449,8 @@ void whenNullValue_thenReturns400AndErrorResult() throws Exception {
       mvcResult.getResponse().getContentAsString();
   String expectedResponseBody = 
       objectMapper.writeValueAsString(expectedErrorResponse);
-  assertThat(expectedResponseBody)
-      .isEqualToIgnoringWhitespace(actualResponseBody);
+  assertThat(actualResponseBody)
+      .isEqualToIgnoringWhitespace(expectedResponseBody);
 }
 ```
 Again, we read the JSON string from the response body and compare it against an expected JSON string.
@@ -495,7 +499,7 @@ public class ResponseBodyMatchers {
     return mvcResult -> {
       String json = mvcResult.getResponse().getContentAsString();
       T actualObject = objectMapper.readValue(json, targetClass);
-      assertThat(expectedObject).isEqualToComparingFieldByField(actualObject);
+      assertThat(actualObject).isEqualToComparingFieldByField(expectedObject);
     };
   }
   
@@ -577,6 +581,8 @@ the tests to be meaningful, we need to remember to cover all of the responsibili
 we may be in for ugly surprises at runtime.
 
 The example code from this article is available [on github](https://github.com/thombergs/code-examples/tree/master/spring-boot/spring-boot-testing).
+
+**If you like learning from videos, make sure to check out Philip's** [**Testing Spring Boot Applications Masterclass**](https://transactions.sendowl.com/stores/13745/194393) (if you buy through this link, I get a cut). 
 
 
 

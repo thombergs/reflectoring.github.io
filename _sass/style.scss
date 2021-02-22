@@ -83,9 +83,12 @@ a:hover, a:focus {
   outline: none;
 }
 
-.text a, .below-content-container p a {
-  font-weight: normal;
+.text a, .below-content-container p a, .media-body p a {
   color: $link-color;
+}
+
+p > a, li > a {
+  font-weight: normal;
 }
 
 p {
@@ -366,6 +369,10 @@ textarea.input {
   box-shadow: -1px 0px 0px 0px #eceef2 inset;
   -webkit-transition: 0.2s color;
   transition: 0.2s color;
+}
+
+.nav-menu li a {
+    font-weight: 600;
 }
 
 .nav-menu li:first-child a {
@@ -1249,6 +1256,10 @@ textarea.input {
 
 .footer-social a.follow-email:hover {
   background-color: #000000;
+}
+
+.footer-social a.follow-facebook:hover {
+  background-color: #4267B2;
 }
 
 .footer-social li > a:hover, .footer-social li > a:focus {

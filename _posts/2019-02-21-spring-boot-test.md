@@ -1,11 +1,10 @@
 ---
-title: "Integration Tests with @SpringBootTest"
+title: "Integration Tests with Spring Boot and @SpringBootTest"
 categories: [spring-boot]
-modified: 2019-02-23
+modified: 2020-09-15
 excerpt: "A tutorial on when and how to use Spring Boot's @SpringBootTest annotation and how to reduce test runtime."
 image:
   auto: 0018-cogs
-
 ---
 
 
@@ -22,9 +21,11 @@ different ways to customize the application context and how to reduce test runti
 This tutorial is part of a series:
 
 1. [Unit Testing with Spring Boot](/unit-testing-spring-boot/)
-2. [Testing Spring MVC Web Controllers with `@WebMvcTest`](/spring-boot-web-controller-test/)
-3. [Testing JPA Queries with `@DataJpaTest`](/spring-boot-data-jpa-test/)
+2. [Testing Spring MVC Web Controllers with Spring Boot and `@WebMvcTest`](/spring-boot-web-controller-test/)
+3. [Testing JPA Queries with Spring Boot and `@DataJpaTest`](/spring-boot-data-jpa-test/)
 4. [Integration Tests with `@SpringBootTest`](/spring-boot-test/)
+
+**If you like learning from videos, make sure to check out Philip's** [**Testing Spring Boot Applications Masterclass**](https://transactions.sendowl.com/stores/13745/194393) (if you buy through this link, I get a cut). 
 
 ## Dependencies
 
@@ -288,8 +289,10 @@ class MockBeanTest {
 ```
 
 In this case, we have replaced the `UserRepository` bean with a mock.
-Using Mockito's `when` method, we have specified the expected behavior for this
+Using Mockito's `given` method, we have specified the expected behavior for this
 mock in order to test a class that uses this repository.
+
+You can read more about the `@MockBean` annotation in [my article](/spring-boot-mock/) about mocking.
 
 ### Adding Beans with `@Import`
 
@@ -414,4 +417,6 @@ as close to production as possible.
 `@SpringBootTest` brings the most value if we want to test the whole way through the application.
 For testing only certain slices or layers of the application, we have other options available.
 
-The example code used in this article is available on [github](https://github.com/thombergs/code-examples/tree/master/spring-boot/spring-boot-testing). 
+The example code used in this article is available on [github](https://github.com/thombergs/code-examples/tree/master/spring-boot/spring-boot-testing).
+
+**If you like learning from videos, make sure to check out Philip's** [**Testing Spring Boot Applications Masterclass**](https://transactions.sendowl.com/stores/13745/194393) (if you buy through this link, I get a cut). 
